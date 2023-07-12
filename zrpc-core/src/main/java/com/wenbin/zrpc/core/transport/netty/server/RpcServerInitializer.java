@@ -33,10 +33,10 @@ public class RpcServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
         socketChannel.pipeline().addLast(new IdleStateHandler(0, 0, HeartBeatConst.BEAT_TIME_OUT, TimeUnit.SECONDS))
-                .addLast(new IdleChannelHandler())
                 .addLast(new ChannelStatistics(channelGroup))
                 .addLast(new RequestDecoder())
                 .addLast(new ResponseEncoder())
+                .addLast(new IdleChannelHandler())
                 .addLast(new RpcServerHandler(threadPoolExecutor, requestHandler));
     }
 }

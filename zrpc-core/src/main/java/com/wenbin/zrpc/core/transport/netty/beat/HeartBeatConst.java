@@ -21,6 +21,6 @@ public class HeartBeatConst {
     public static RpcCommand BEAT_PING;
 
     static {
-        BEAT_PING = new RpcCommand(new RpcHeader(BEAT_PING_ID, SerializationTypeEnum.PROTOSTUFF.getByte()), null);
+        BEAT_PING = new RpcCommand(new RpcHeader(BEAT_PING_ID, SerializationTypeEnum.PROTOSTUFF.getByte()), new byte[0]);
     }
 }

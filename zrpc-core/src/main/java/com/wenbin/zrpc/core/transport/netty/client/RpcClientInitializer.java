@@ -25,7 +25,7 @@ public class RpcClientInitializer extends ChannelInitializer<SocketChannel> {
 
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
-        socketChannel.pipeline().addLast(new IdleStateHandler(0, 0, HeartBeatConst.BEAT_TIME_OUT, TimeUnit.SECONDS))
+        socketChannel.pipeline().addLast(new IdleStateHandler(0, 0, HeartBeatConst.BEAT_TIME, TimeUnit.SECONDS))
                 .addLast(new BeatChannelHandler()).addLast(new RequestEncoder()).addLast(new ResponseDecoder())
                 .addLast(new RpcClientHandler(defaultServiceContext));
     }
